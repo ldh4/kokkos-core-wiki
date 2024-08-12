@@ -435,7 +435,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/MPI-Halo-Exchange.html">MPI Halo Exchange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/Average-To-Nodes.html">ScatterView averaging elements to nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/MDRangePolicy.html">MDRangePolicy Use Case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../usecases/VirtualFunctions.html">Virtual Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/TaggedOperators.html">Tagged Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/OverlappingHostAndDeviceWork.html">Overlapping Host and Device work</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/Tasking.html">Kokkos Tasking Use Case</a></li>
@@ -536,7 +535,7 @@
 </div>
 <p>The definition of the macro <code class="docutils literal notranslate"><span class="pre">KOKKOS_ASSERT</span></code> depends on other macros,
 <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> and <code class="docutils literal notranslate"><span class="pre">KOKKOS_ENABLE_DEBUG</span></code>.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> is a defined and <code class="docutils literal notranslate"><span class="pre">KOKKOS_ENABLE_DEBUG</span></code> is not
+<p>If <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> is defined and <code class="docutils literal notranslate"><span class="pre">KOKKOS_ENABLE_DEBUG</span></code> is not
 defined at the point in the source code where <code class="docutils literal notranslate"><span class="pre">&lt;Kokkos_Assert.hpp&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;Kokkos_Core.hpp&gt;</span></code> is
 included, then assert does nothing.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> is not defined or <code class="docutils literal notranslate"><span class="pre">KOKKOS_ENABLE_DEBUG</span></code> is defined,  then

@@ -435,7 +435,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../usecases/MPI-Halo-Exchange.html">MPI Halo Exchange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usecases/Average-To-Nodes.html">ScatterView averaging elements to nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usecases/MDRangePolicy.html">MDRangePolicy Use Case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usecases/VirtualFunctions.html">Virtual Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usecases/TaggedOperators.html">Tagged Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usecases/OverlappingHostAndDeviceWork.html">Overlapping Host and Device work</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usecases/Tasking.html">Kokkos Tasking Use Case</a></li>
@@ -554,7 +553,9 @@ The tested compiler versions are also listed <a class="reference external" href=
 These test configurations (sparsely) cover the cross product of hardware platforms (e.g. NVIDIA. Intel, and AMD),
 compilers (e.g. GCC, Clang, NVC++), C++ standards (17-23), Kokkos backends (e.g. Cuda, OpenMP, and HIP) and Kokkos
 configuration options (e.g. Debug, Relocatable Device Code).</p>
-<p>The clang-format style file is <code class="docutils literal notranslate"><span class="pre">kokkos/.clang-format</span></code>.</p>
+<p>The clang-format style file is <code class="docutils literal notranslate"><span class="pre">kokkos/.clang-format</span></code>. The clang-format version
+to use is specified as a comment in the header of the <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code>
+configuration file.</p>
 <p>Only the primary Kokkos maintainers can merge pull requests, they have the responsibility to judge whether conducted reviews meet the desired thoroughness.</p>
 </section>
 <section id="nightly-testing">

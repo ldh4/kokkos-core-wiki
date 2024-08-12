@@ -24,7 +24,7 @@ Execution Spaces
 
 .. |ExecutionSpaceS| replace:: :cppkokkos:func:`ExecutionSpace` s
 
-.. _MemorySpace: memory_spaces.html#memoryspaceconcept
+.. _MemorySpace: memory_spaces.html#kokkos-memoryspaceconcept
 
 .. |MemorySpace| replace:: :cppkokkos:func:`MemorySpace`
 
@@ -79,6 +79,13 @@ generically as an execution space. For details, see |DocExecutionSpaceConcept|_.
 ``Kokkos::OpenMPTarget`` is an |ExecutionSpaceConceptType|_ representing execution using the target offloading
 feature of the OpenMP runtime system. Except in rare instances, it should not be used directly, but instead
 should be used generically as an execution space. For details, see |DocExecutionSpaceConcept|_.
+
+``Kokkos::Threads``
+-------------------
+
+``Kokkos::Threads`` is an |ExecutionSpaceConceptType|_ representing parallel execution with std::threads.
+Except in rare instances, it should not be used directly, but instead should be used
+generically as an execution space. For details, see |DocExecutionSpaceConcept|_.
 
 ``Kokkos::Serial``
 ------------------
@@ -264,6 +271,7 @@ Synopsis
         typedef Device<execution_space, memory_space> device_type;
         typedef ... scratch_memory_space;
         typedef ... array_layout;
+        typedef ... size_type;
 
         ExecutionSpaceConcept();
         ExecutionSpaceConcept(const ExecutionSpaceConcept& src);
@@ -302,6 +310,8 @@ Typedefs
 * ``array_layout``: The default ``ArrayLayout`` recommended for use with ``View`` types accessed from |ExecutionSpaceConcept|_.
 
 * ``scratch_memory_space``: The ``ScratchMemorySpace`` that parallel patterns will use for allocation of scratch memory (for instance, as requested by a |KokkosTeamPolicy|_)
+
+* ``size_type``: The default integer type associated with this space. Signed or unsigned, 32 or 64 bit integer type, used as preferred type for indexing.
 
 Constructors
 ~~~~~~~~~~~~

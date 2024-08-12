@@ -435,7 +435,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/MPI-Halo-Exchange.html">MPI Halo Exchange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/Average-To-Nodes.html">ScatterView averaging elements to nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/MDRangePolicy.html">MDRangePolicy Use Case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../usecases/VirtualFunctions.html">Virtual Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/TaggedOperators.html">Tagged Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/OverlappingHostAndDeviceWork.html">Overlapping Host and Device work</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../usecases/Tasking.html">Kokkos Tasking Use Case</a></li>
@@ -584,7 +583,7 @@ provided by the work items. The optional label <code class="docutils literal not
 <li><p><code class="docutils literal notranslate"><span class="pre">HandleType</span></code> is an <code class="docutils literal notranslate"><span class="pre">IntegerType</span></code> if <code class="docutils literal notranslate"><span class="pre">ExecPolicy</span></code> is an <code class="docutils literal notranslate"><span class="pre">IntegerType</span></code> else it is <code class="docutils literal notranslate"><span class="pre">ExecPolicy::member_type</span></code>.</p></li>
 </ul>
 </li>
-<li><p>The type <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> of the <code class="docutils literal notranslate"><span class="pre">functor</span></code> operator must be compatible with the <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> of the parallel_scan and must match the arguments of the <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">join</span></code> functions of the functor.</p></li>
+<li><p>The type <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> of the <code class="docutils literal notranslate"><span class="pre">functor</span></code> operator must be compatible with the <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> of the parallel_scan and must match the arguments of the <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">join</span></code> functions of the functor if provided. If the functor doesn’t have an <code class="docutils literal notranslate"><span class="pre">init</span></code> member function, it is assumed that the identity for the scan operation is given by the default constructor of the value type (and not by <code class="docutils literal notranslate"><span class="pre">reduction_identity`</span></code>).</p></li>
 <li><p>the functor must define FunctorType::value_type the same as ReturnType</p></li>
 </ul>
 </section>
@@ -595,6 +594,8 @@ provided by the work items. The optional label <code class="docutils literal not
 <li><p>Neither concurrency nor order of execution are guaranteed.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> content will be overwritten, i.e. the value does not need to be initialized to the reduction-neutral element.</p></li>
 <li><p>The input value to the operator may contain a partial result, Kokkos may only combine the thread local contributions in the end. The operator should modify the input value according to the desired scan operation.</p></li>
+<li><p>It is not guaranteed that the functor will ever be called with <code class="docutils literal notranslate"><span class="pre">final</span> <span class="pre">=</span> <span class="pre">false</span></code>.</p></li>
+<li><p>The functor might be called multiple times with <code class="docutils literal notranslate"><span class="pre">final</span> <span class="pre">=</span> <span class="pre">false</span></code> and the user has to make sure that the behavior in this case stays the same for repeated calls.</p></li>
 </ul>
 </section>
 <section id="examples">
